@@ -126,4 +126,13 @@ public class Book {
 	public void setTotalRatingStars(long totalRatingStars) {
 		this.totalRatingStars = totalRatingStars;
 	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", imageUrl="
+				+ imageUrl + ", pages=" + pages + ", language=" + language + ", readingAgeGroup=" + readingAgeGroup
+				+ ", amazonLink=" + amazonLink + ", flipkartLink=" + flipkartLink + ", publisher=" + publisher
+				+ ", totalRatingsCount=" + totalRatingsCount + ", totalRatingStars=" + totalRatingStars + "]";
+	}
+
 }
