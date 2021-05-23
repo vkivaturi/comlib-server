@@ -1,19 +1,23 @@
 package com.comlib.server.entity;
 
+import java.util.Objects;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 //Book entity stores basic details of a book. This is a master catalogue of all books in the application.
 //Users are allowed to select books from the master catalogue or add new books to the master catalogue
 
-@Entity
 public class Book {
-	private @Id @GeneratedValue Long bookId;
+	private Long id;
 	private String title;
 	private String author;
 	private String isbn;
 	private String imageUrl;
+	private String description;
 	private int pages;
 	private String language;
 	private String readingAgeGroup;
@@ -21,7 +25,7 @@ public class Book {
 	private String flipkartLink;
 	private String publisher;
 	private int totalRatingsCount;
-	private long totalRatingStars;
+	private int totalRatingStars;
 	
 	//Default constructor
 	public Book() {
@@ -29,15 +33,15 @@ public class Book {
 	}
 
 	//Constructor with all fields provided by client
-	public Book(Long bookId, String title, String author, String isbn, String imageUrl, int pages, String language,
-			String readingAgeGroup, String amazonLink, String flipkartLink, String publisher, int totalRatingsCount,
-			long totalRatingStars) {
+	public Book(String title, String author, String isbn, String imageUrl, String description, int pages,
+			String language, String readingAgeGroup, String amazonLink, String flipkartLink, String publisher,
+			int totalRatingsCount, int totalRatingStars) {
 		super();
-		this.bookId = bookId;
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
 		this.imageUrl = imageUrl;
+		this.description = description;
 		this.pages = pages;
 		this.language = language;
 		this.readingAgeGroup = readingAgeGroup;
@@ -47,13 +51,15 @@ public class Book {
 		this.totalRatingsCount = totalRatingsCount;
 		this.totalRatingStars = totalRatingStars;
 	}
-	
-	public Long getBookId() {
-		return bookId;
+
+	public Long getId() {
+		return id;
 	}
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -71,6 +77,13 @@ public class Book {
 	}
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getImageUrl() {
 		return imageUrl;
@@ -123,16 +136,33 @@ public class Book {
 	public long getTotalRatingStars() {
 		return totalRatingStars;
 	}
-	public void setTotalRatingStars(long totalRatingStars) {
+	public void setTotalRatingStars(int totalRatingStars) {
 		this.totalRatingStars = totalRatingStars;
 	}
+	
+	  @Override
+	  public boolean equals(Object o) {
+
+	    if (this == o)
+	      return true;
+	    if (!(o instanceof Book))
+	      return false;
+	    Book book = (Book) o;
+	    return Objects.equals(this.id, book.id) && Objects.equals(this.title, book.title);
+	  }
+
+	  @Override
+	  public int hashCode() {
+	    return Objects.hash(this.id, this.title);
+	  }
 
 	@Override
 	public String toString() {
-		return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", imageUrl="
-				+ imageUrl + ", pages=" + pages + ", language=" + language + ", readingAgeGroup=" + readingAgeGroup
-				+ ", amazonLink=" + amazonLink + ", flipkartLink=" + flipkartLink + ", publisher=" + publisher
-				+ ", totalRatingsCount=" + totalRatingsCount + ", totalRatingStars=" + totalRatingStars + "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", imageUrl="
+				+ imageUrl + ", description=" + description + ", pages=" + pages + ", language=" + language
+				+ ", readingAgeGroup=" + readingAgeGroup + ", amazonLink=" + amazonLink + ", flipkartLink="
+				+ flipkartLink + ", publisher=" + publisher + ", totalRatingsCount=" + totalRatingsCount
+				+ ", totalRatingStars=" + totalRatingStars + "]";
 	}
-
+	  
 }

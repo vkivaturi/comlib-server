@@ -1,16 +1,11 @@
 package com.comlib.server.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 //Community entity stores basic details of a community. A community can be an apartment complex, a colony, a college
 //or any other logical group of people who live in close proximity and interact.
 
-@Entity
 public class Community {
 	
-	private @Id @GeneratedValue Long communityId;
+	private int id;
 	private String name;
 	private String locality;
 	private String city;
@@ -21,9 +16,8 @@ public class Community {
 		super();
 	}
 
-	public Community(Long communityId, String name, String locality, String city, String pinCode, String adminUser) {
+	public Community(String name, String locality, String city, String pinCode, String adminUser) {
 		super();
-		this.communityId = communityId;
 		this.name = name;
 		this.locality = locality;
 		this.city = city;
@@ -31,11 +25,11 @@ public class Community {
 		this.adminUser = adminUser;
 	}
 
-	public Long getCommunityId() {
-		return communityId;
+	public int getCommunityId() {
+		return id;
 	}
-	public void setCommunityId(Long communityId) {
-		this.communityId = communityId;
+	public void setCommunityId(int communityId) {
+		this.id = communityId;
 	}
 	public String getName() {
 		return name;
@@ -70,7 +64,7 @@ public class Community {
 	}
 	@Override
 	public String toString() {
-		return "Community [communityId=" + communityId + ", name=" + name + ", locality=" + locality
+		return "Community [communityId=" + id + ", name=" + name + ", locality=" + locality
 				+ ", city=" + city + ", pinCode=" + pinCode + ", adminUser=" + adminUser + "]";
 	}
 	
