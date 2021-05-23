@@ -53,7 +53,7 @@ public class UserBook {
 		this.bookId = bookId;
 	}
 
-	public boolean isAvailable() {
+	public boolean getIsAvailable() {
 		return isAvailable;
 	}
 
@@ -61,7 +61,7 @@ public class UserBook {
 		this.isAvailable = isAvailable;
 	}
 
-	public boolean isActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 

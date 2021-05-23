@@ -2,12 +2,6 @@ package com.comlib.server.entity;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 //Book entity stores basic details of a book. This is a master catalogue of all books in the application.
 //Users are allowed to select books from the master catalogue or add new books to the master catalogue
 
@@ -21,11 +15,11 @@ public class Book {
 	private int pages;
 	private String language;
 	private String readingAgeGroup;
-	private String amazonLink;
-	private String flipkartLink;
+	private String amazonUrl;
+	private String flipkartUrl;
 	private String publisher;
 	private int totalRatingsCount;
-	private int totalRatingStars;
+	private int totalRatingsValue;
 	
 	//Default constructor
 	public Book() {
@@ -34,8 +28,8 @@ public class Book {
 
 	//Constructor with all fields provided by client
 	public Book(String title, String author, String isbn, String imageUrl, String description, int pages,
-			String language, String readingAgeGroup, String amazonLink, String flipkartLink, String publisher,
-			int totalRatingsCount, int totalRatingStars) {
+			String language, String readingAgeGroup, String amazonUrl, String flipkartUrl, String publisher,
+			int totalRatingsCount, int totalRatingsValue) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -45,11 +39,11 @@ public class Book {
 		this.pages = pages;
 		this.language = language;
 		this.readingAgeGroup = readingAgeGroup;
-		this.amazonLink = amazonLink;
-		this.flipkartLink = flipkartLink;
+		this.amazonUrl = amazonUrl;
+		this.flipkartUrl = flipkartUrl;
 		this.publisher = publisher;
 		this.totalRatingsCount = totalRatingsCount;
-		this.totalRatingStars = totalRatingStars;
+		this.totalRatingsValue = totalRatingsValue;
 	}
 
 	public Long getId() {
@@ -109,17 +103,17 @@ public class Book {
 	public void setReadingAgeGroup(String readingAgeGroup) {
 		this.readingAgeGroup = readingAgeGroup;
 	}
-	public String getAmazonLink() {
-		return amazonLink;
+	public String getAmazonUrl() {
+		return amazonUrl;
 	}
-	public void setAmazonLink(String amazonLink) {
-		this.amazonLink = amazonLink;
+	public void setAmazonUrl(String amazonUrl) {
+		this.amazonUrl = amazonUrl;
 	}
-	public String getFlipkartLink() {
-		return flipkartLink;
+	public String getFlipkartUrl() {
+		return flipkartUrl;
 	}
-	public void setFlipkartLink(String flipkartLink) {
-		this.flipkartLink = flipkartLink;
+	public void setFlipkartUrl(String flipkartUrl) {
+		this.flipkartUrl = flipkartUrl;
 	}
 	public String getPublisher() {
 		return publisher;
@@ -133,11 +127,11 @@ public class Book {
 	public void setTotalRatingsCount(int totalRatingsCount) {
 		this.totalRatingsCount = totalRatingsCount;
 	}
-	public long getTotalRatingStars() {
-		return totalRatingStars;
+	public long getTotalRatingsValue() {
+		return totalRatingsValue;
 	}
-	public void setTotalRatingStars(int totalRatingStars) {
-		this.totalRatingStars = totalRatingStars;
+	public void setTotalRatingStars(int totalRatingsValue) {
+		this.totalRatingsValue = totalRatingsValue;
 	}
 	
 	  @Override
@@ -160,9 +154,9 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", imageUrl="
 				+ imageUrl + ", description=" + description + ", pages=" + pages + ", language=" + language
-				+ ", readingAgeGroup=" + readingAgeGroup + ", amazonLink=" + amazonLink + ", flipkartLink="
-				+ flipkartLink + ", publisher=" + publisher + ", totalRatingsCount=" + totalRatingsCount
-				+ ", totalRatingStars=" + totalRatingStars + "]";
+				+ ", readingAgeGroup=" + readingAgeGroup + ", amazonLink=" + amazonUrl + ", flipkartLink="
+				+ flipkartUrl + ", publisher=" + publisher + ", totalRatingsCount=" + totalRatingsCount
+				+ ", totalRatingsValue=" + totalRatingsValue + "]";
 	}
 	  
 }

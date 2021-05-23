@@ -43,7 +43,7 @@ public class UserAccess {
 		this.communityId = communityId;
 	}
 
-	public boolean isActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 

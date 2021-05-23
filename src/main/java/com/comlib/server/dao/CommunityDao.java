@@ -2,6 +2,7 @@ package com.comlib.server.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -22,17 +23,11 @@ public class CommunityDao {
 	}
 
 	public void add(Community community) {
-
-		MapSqlParameterSource mapSqlBook = new MapSqlParameterSource();
-		mapSqlBook.addValue("name", community.getName());
-		mapSqlBook.addValue("locality", community.getLocality());
-		mapSqlBook.addValue("city", community.getCity());
-		mapSqlBook.addValue("pinCode", community.getPinCode());
-		mapSqlBook.addValue("adminUser", community.getAdminUser());
-
+		
+		BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(community);
 		String insertSql = "insert into community (name, locality, city, pinCode, adminUser) values (:name, :locality, :city, :pinCode, :adminUser);";
 
-		namedParameterJdbcTemplate.update(insertSql, mapSqlBook);
+		namedParameterJdbcTemplate.update(insertSql, paramSource);
 
 	}
 

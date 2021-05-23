@@ -47,7 +47,7 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 
