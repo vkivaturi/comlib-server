@@ -1,15 +1,11 @@
 package com.comlib.server.entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 //User represents all persons on the library. This could be community admins, people who have books to offer and those
 //who want to lend books.
 
-@Entity
 public class User {
 	
-	private @Id @GeneratedValue Long userId;
+	private int id;
 	private String email;
 	private String name;
 	private String password;
@@ -19,21 +15,12 @@ public class User {
 		super();
 	}
 
-	public User(Long userId, String email, String name, String password, boolean isActive) {
+	public User(String email, String name, String password, boolean isActive) {
 		super();
-		this.userId = userId;
 		this.email = email;
 		this.name = name;
 		this.password = password;
 		this.isActive = isActive;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
 	}
 
 	public String getEmail() {
@@ -70,7 +57,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", email=" + email + ", name=" + name 
+		return "User [userId=" + id + ", email=" + email + ", name=" + name 
 				+ ", isActive=" + isActive + "]";
 	}
 

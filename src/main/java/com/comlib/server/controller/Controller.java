@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.comlib.server.entity.Book;
 import com.comlib.server.entity.Community;
+import com.comlib.server.entity.User;
 import com.comlib.server.service.BookService;
 import com.comlib.server.service.CommunityService;
+import com.comlib.server.service.UserService;
 
 @RestController
 public class Controller {
@@ -26,6 +28,9 @@ public class Controller {
 	@Autowired
 	CommunityService communityService;
 
+	@Autowired
+	UserService userService;
+
 	@GetMapping("/book/add")
 	public ResponseEntity<List<Book>> addBook() {
 		System.out.println("Inside get2");
@@ -37,6 +42,27 @@ public class Controller {
 	public ResponseEntity<List<Community>> addCommunity() {
 		System.out.println("Inside get2");
 		communityService.addNewCommunity();
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+
+	@GetMapping("/user/add")
+	public ResponseEntity<List<User>> addUser() {
+		System.out.println("Inside get2");
+		userService.addUser();
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+
+	@GetMapping("/user/addaccess")
+	public ResponseEntity<List<User>> addUserAccess() {
+		System.out.println("Inside get3");
+		userService.addUserAccess();
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+
+	@GetMapping("/user/addbook")
+	public ResponseEntity<List<User>> addUserBook() {
+		System.out.println("Inside get4");
+		userService.addUserBook();
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 
